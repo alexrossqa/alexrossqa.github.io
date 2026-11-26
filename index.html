@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Ross — QA Engineer</title>
+  <title>Alex Ross — Automation and Quality Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -231,6 +231,48 @@
       border: 0;
     }
 
+    /* SHOWCASE: a vertical trailer beside screenshots */
+    .showcase {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: #4a1d20;
+    }
+    .showcase video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 8px;
+    }
+    .showcase-shots {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .showcase-shots a { display: block; }
+    .showcase-shots img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+
+    .detail-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .detail-list li {
+      padding: 5px 0;
+      border-top: 1px solid var(--border);
+    }
+    .detail-list li:first-child { border-top: 0; }
+    .detail-list strong { color: var(--text-primary); font-weight: 500; }
+
     /* PIPELINE */
     .pipeline-label {
       font-family: var(--mono);
@@ -284,6 +326,8 @@
       .project-repos { margin-top: 4px; }
       nav .container { padding: 0 1rem; }
       .nav-links { gap: 1rem; }
+      .showcase { grid-template-columns: 1fr; }
+      .showcase video { width: 220px; max-width: 100%; margin: 0 auto; }
     }
   </style>
 </head>
@@ -303,9 +347,9 @@
   <div class="container">
 
     <section class="hero">
-      <p class="hero-eyebrow">QA Engineer — Portfolio</p>
+      <p class="hero-eyebrow">Automation and Quality Engineer — Portfolio</p>
       <h1>Alex Ross<br><strong>Quality &amp; Automation</strong></h1>
-      <p class="hero-desc">Senior QA automation and quality engineer specialising in API test automation, CI/CD pipelines, and exploratory tooling. Remote EU/UK · Outside IR35 · Available for B2B engagements.</p>
+      <p class="hero-desc">Senior automation and quality engineer working in an AI-assisted, agentic SDLC: workflow automation, test automation and CI/CD pipelines built with Claude Code and the Claude API. Remote EU/UK · Outside IR35 · Available for B2B engagements.</p>
       <div class="hero-links">
         <a href="https://www.linkedin.com/in/alex-ross-8a502416/">LinkedIn</a>
         <a href="https://github.com/alexrossqa">GitHub</a>
@@ -315,6 +359,69 @@
 
     <section class="section" id="projects">
       <p class="section-label">Projects</p>
+
+      <div class="project-card">
+        <div class="showcase">
+          <video controls playsinline preload="none" poster="images/repcinema-trailer-poster.webp" width="220" height="391" aria-label="RepCinema trailer">
+            <source src="https://media.repcinema.com/RepCinema-trailer-8m.mp4" type="video/mp4">
+          </video>
+          <div class="showcase-shots">
+            <a href="https://www.repcinema.com/"><img src="images/repcinema-home.webp" width="1280" height="1269" alt="RepCinema website front page, with the Android app and the monthly spreadsheet" loading="lazy"></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-title">RepCinema — London repertory cinema listings</span>
+            <div class="project-repos">
+              <a href="https://www.repcinema.com/">Website</a>
+            </div>
+          </div>
+          <p class="project-desc">London's repertory film screenings — classics, restorations and prints at over 80 venues — published as an Android app, a monthly Google Sheet and a website. Behind it: Playwright and Selenium scrapers, a Claude API scraper for venues without their own, a weekly check for new and dropped screenings, and a Supabase database the app reads.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">Java</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Jest</span>
+            <span class="tag">React Native Testing Library</span>
+            <span class="tag">Appium</span>
+            <span class="tag">Kiwi TCMS</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">Claude Code</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Cloudflare</span>
+          </div>
+          <p class="pipeline-label">Testing</p>
+          <ul class="detail-list">
+            <li><strong>Unit</strong> — Jest tests for the app's shared rules (showtimes, title cleaning, same-film matching, booking links), run on every pull request</li>
+            <li><strong>Component</strong> — screens rendered from fixed data with React Native Testing Library, no phone needed</li>
+            <li><strong>Device end to end</strong> — Appium (Java) on a real Android phone, in progress</li>
+            <li><strong>Contract</strong> — the same titles run through the Python, Java and TypeScript title rules; the test fails if any two disagree</li>
+            <li><strong>Reporting</strong> — results recorded in Kiwi TCMS automatically, matched to each test case by its number</li>
+          </ul>
+          <p class="pipeline-label">CI/CD jobs</p>
+          <ul class="detail-list">
+            <li><strong>Jenkins, nightly</strong> — Playwright (Python) and Selenium (Java) scrapers write a dated CSV per venue</li>
+            <li><strong>Jenkins, weekly</strong> — a Claude API scraper for about 90 smaller venues and ticket sites, then a comparison against the database and emailed review files</li>
+            <li><strong>Jenkins, monthly</strong> — compile the month's working sheet, promote it to the release candidate, and build the published sheet from the database; Claude Code copies the Drive files</li>
+            <li><strong>Jenkins, membership</strong> — a daily Patreon/Wix membership check with an email report, and sheet access granted by membership tier</li>
+            <li><strong>Jenkins, health</strong> — a daily check that the build machine's Claude Code login hasn't lapsed</li>
+            <li><strong>GitHub Actions</strong> — lint, build and unit tests on every pull request; a listing health check; a database keep-alive</li>
+            <li><strong>Cloudflare Pages</strong> — the website published on every merge, with a preview for each pull request</li>
+          </ul>
+          <p class="pipeline-label">Pipeline</p>
+          <div class="pipeline">
+            <span class="step">Nightly scrapers</span><span class="arr">→</span>
+            <span class="step">Weekly compare</span><span class="arr">→</span>
+            <span class="step">Review</span><span class="arr">→</span>
+            <span class="step">Supabase</span><span class="arr">→</span>
+            <span class="step">App &amp; sheet</span>
+          </div>
+        </div>
+      </div>
 
       <div class="project-card">
         <div class="video-wrapper">
@@ -352,15 +459,6 @@
             <span class="step">API tests</span><span class="arr">→</span>
             <span class="step">Mailout</span>
           </div>
-        </div>
-      </div>
-
-      <div class="project-card upcoming">
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">Repcinema — AI &amp; Claude Code exploration</span>
-          </div>
-          <p class="upcoming-label">In progress.</p>
         </div>
       </div>
 
