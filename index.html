@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Ross — QA Engineer</title>
+  <title>Alex Ross — Automation and Quality Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -347,7 +347,7 @@
   <div class="container">
 
     <section class="hero">
-      <p class="hero-eyebrow">QA Engineer — Portfolio</p>
+      <p class="hero-eyebrow">Automation and Quality Engineer — Portfolio</p>
       <h1>Alex Ross<br><strong>Quality &amp; Automation</strong></h1>
       <p class="hero-desc">Senior automation and quality engineer working in an AI-assisted, agentic SDLC: workflow automation, test automation and CI/CD pipelines built with Claude Code and the Claude API. Remote EU/UK · Outside IR35 · Available for B2B engagements.</p>
       <div class="hero-links">
@@ -404,9 +404,11 @@
           </ul>
           <p class="pipeline-label">CI/CD jobs</p>
           <ul class="detail-list">
-            <li><strong>Jenkins, nightly</strong> — Playwright (Python) and Selenium (Java) scrapers write a dated CSV per venue</li>
-            <li><strong>Jenkins, weekly</strong> — Claude API scraper for about 90 smaller venues and ticket sites, then a comparison against the database and an emailed review</li>
-            <li><strong>Jenkins, membership</strong> — sheet access for new Patreon members, and a Patreon/Wix membership sync with an email report</li>
+            <li><strong>Jenkins, nightly</strong> — Playwright (Python) scrapers write a dated CSV per venue</li>
+            <li><strong>Jenkins, weekly</strong> — Selenium (Java) scrapers, a Claude API scraper for about 90 smaller venues and ticket sites, then a comparison against the database and emailed review files</li>
+            <li><strong>Jenkins, monthly</strong> — compile the month's working sheet, promote it to the release candidate, and build the published sheet from the database; Claude Code copies the Drive files</li>
+            <li><strong>Jenkins, membership</strong> — a daily Patreon/Wix membership check with an email report, and sheet access granted by membership tier</li>
+            <li><strong>Jenkins, health</strong> — a daily check that the build machine's Claude Code login hasn't lapsed</li>
             <li><strong>GitHub Actions</strong> — lint, build and unit tests on every pull request; a listing health check; a database keep-alive</li>
             <li><strong>Cloudflare Pages</strong> — the website published on every merge, with a preview for each pull request</li>
           </ul>
