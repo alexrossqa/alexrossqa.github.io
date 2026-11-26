@@ -404,8 +404,8 @@
           </ul>
           <p class="pipeline-label">CI/CD jobs</p>
           <ul class="detail-list">
-            <li><strong>Jenkins, nightly</strong> — Playwright (Python) scrapers write a dated CSV per venue</li>
-            <li><strong>Jenkins, weekly</strong> — Selenium (Java) scrapers, a Claude API scraper for about 90 smaller venues and ticket sites, then a comparison against the database and emailed review files</li>
+            <li><strong>Jenkins, nightly</strong> — Playwright (Python) and Selenium (Java) scrapers write a dated CSV per venue</li>
+            <li><strong>Jenkins, weekly</strong> — a Claude API scraper for about 90 smaller venues and ticket sites, then a comparison against the database and emailed review files</li>
             <li><strong>Jenkins, monthly</strong> — compile the month's working sheet, promote it to the release candidate, and build the published sheet from the database; Claude Code copies the Drive files</li>
             <li><strong>Jenkins, membership</strong> — a daily Patreon/Wix membership check with an email report, and sheet access granted by membership tier</li>
             <li><strong>Jenkins, health</strong> — a daily check that the build machine's Claude Code login hasn't lapsed</li>
