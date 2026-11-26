@@ -249,7 +249,6 @@
     .showcase-shots {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
       justify-content: center;
     }
     .showcase-shots a { display: block; }
@@ -260,6 +259,19 @@
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.35);
     }
+
+    .detail-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .detail-list li {
+      padding: 5px 0;
+      border-top: 1px solid var(--border);
+    }
+    .detail-list li:first-child { border-top: 0; }
+    .detail-list strong { color: var(--text-primary); font-weight: 500; }
 
     /* PIPELINE */
     .pipeline-label {
@@ -349,6 +361,67 @@
       <p class="section-label">Projects</p>
 
       <div class="project-card">
+        <div class="showcase">
+          <video controls playsinline preload="none" poster="images/repcinema-trailer-poster.webp" width="220" height="391" aria-label="RepCinema trailer">
+            <source src="https://media.repcinema.com/RepCinema-trailer-8m.mp4" type="video/mp4">
+          </video>
+          <div class="showcase-shots">
+            <a href="https://www.repcinema.com/"><img src="images/repcinema-home.webp" width="1280" height="1269" alt="RepCinema website front page, with the Android app and the monthly spreadsheet" loading="lazy"></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-title">RepCinema — London repertory cinema listings</span>
+            <div class="project-repos">
+              <a href="https://www.repcinema.com/">Website</a>
+            </div>
+          </div>
+          <p class="project-desc">London's repertory film screenings — classics, restorations and prints at over 80 venues — published as an Android app, a monthly Google Sheet and a website. Behind it: Playwright and Selenium scrapers, a Claude API scraper for venues without their own, a weekly check for new and dropped screenings, and a Supabase database the app reads.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">Java</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Jest</span>
+            <span class="tag">React Native Testing Library</span>
+            <span class="tag">Appium</span>
+            <span class="tag">Kiwi TCMS</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">Claude Code</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Cloudflare</span>
+          </div>
+          <p class="pipeline-label">Testing</p>
+          <ul class="detail-list">
+            <li><strong>Unit</strong> — Jest tests for the app's shared rules (showtimes, title cleaning, same-film matching, booking links), run on every pull request</li>
+            <li><strong>Component</strong> — screens rendered from fixed data with React Native Testing Library, no phone needed</li>
+            <li><strong>Device end to end</strong> — Appium (Java) on a real Android phone, in progress</li>
+            <li><strong>Contract</strong> — the same titles run through the Python, Java and TypeScript title rules; the test fails if any two disagree</li>
+            <li><strong>Reporting</strong> — results recorded in Kiwi TCMS automatically, matched to each test case by its number</li>
+          </ul>
+          <p class="pipeline-label">CI/CD jobs</p>
+          <ul class="detail-list">
+            <li><strong>Jenkins, nightly</strong> — Playwright (Python) and Selenium (Java) scrapers write a dated CSV per venue</li>
+            <li><strong>Jenkins, weekly</strong> — Claude API scraper for about 90 smaller venues and ticket sites, then a comparison against the database and an emailed review</li>
+            <li><strong>Jenkins, membership</strong> — sheet access for new Patreon members, and a Patreon/Wix membership sync with an email report</li>
+            <li><strong>GitHub Actions</strong> — lint, build and unit tests on every pull request; a listing health check; a database keep-alive</li>
+            <li><strong>Cloudflare Pages</strong> — the website published on every merge, with a preview for each pull request</li>
+          </ul>
+          <p class="pipeline-label">Pipeline</p>
+          <div class="pipeline">
+            <span class="step">Nightly scrapers</span><span class="arr">→</span>
+            <span class="step">Weekly compare</span><span class="arr">→</span>
+            <span class="step">Review</span><span class="arr">→</span>
+            <span class="step">Supabase</span><span class="arr">→</span>
+            <span class="step">App &amp; sheet</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
         <div class="video-wrapper">
           <iframe src="https://player.vimeo.com/video/1185453113?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Plex Automation Pipeline"></iframe>
         </div>
@@ -383,49 +456,6 @@
             <span class="step">Read timestamp</span><span class="arr">→</span>
             <span class="step">API tests</span><span class="arr">→</span>
             <span class="step">Mailout</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="showcase">
-          <video controls playsinline preload="none" poster="images/repcinema-trailer-poster.webp" width="220" height="391" aria-label="RepCinema trailer">
-            <source src="https://media.repcinema.com/RepCinema-trailer-8m.mp4" type="video/mp4">
-          </video>
-          <div class="showcase-shots">
-            <a href="https://www.repcinema.com/"><img src="images/repcinema-home.webp" width="1280" height="800" alt="RepCinema website front page" loading="lazy"></a>
-            <a href="https://www.repcinema.com/latest-listings"><img src="images/repcinema-listings.webp" width="1280" height="800" alt="RepCinema Latest Listings page" loading="lazy"></a>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-title">RepCinema — London repertory cinema listings</span>
-            <div class="project-repos">
-              <a href="https://www.repcinema.com/">Website</a>
-            </div>
-          </div>
-          <p class="project-desc">London's repertory film screenings — classics, restorations and prints at over 80 venues — published as an Android app, a monthly Google Sheet and a website. Behind it: nightly Playwright and Selenium scrapers, a Claude API scraper for venues without their own, a weekly check for new and dropped screenings, and a Supabase database the app reads. The app is tested with an Appium/Java suite tracked in Kiwi TCMS, and a contract test keeps the title-cleaning rules identical across Python, Java and TypeScript.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Playwright</span>
-            <span class="tag">Java</span>
-            <span class="tag">Selenium</span>
-            <span class="tag">Claude API</span>
-            <span class="tag">Claude Code</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">React Native</span>
-            <span class="tag">Appium</span>
-            <span class="tag">Kiwi TCMS</span>
-            <span class="tag">Jenkins</span>
-            <span class="tag">Cloudflare</span>
-          </div>
-          <p class="pipeline-label">Pipeline</p>
-          <div class="pipeline">
-            <span class="step">Nightly scrapers</span><span class="arr">→</span>
-            <span class="step">Weekly compare</span><span class="arr">→</span>
-            <span class="step">Review</span><span class="arr">→</span>
-            <span class="step">Supabase</span><span class="arr">→</span>
-            <span class="step">App &amp; sheet</span>
           </div>
         </div>
       </div>
